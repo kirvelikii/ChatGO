@@ -1,0 +1,51 @@
+2023-04-29 11:18:19,470 ERROR: Exception on /export_posts [GET] [in C:\Users\viaki\PycharmProjects\microblog-0.23\lib\site-packages\flask\app.py:1454]
+Traceback (most recent call last):
+  File "C:\Users\viaki\PycharmProjects\microblog-0.23\lib\site-packages\redis\connection.py", line 559, in connect
+    sock = self._connect()
+  File "C:\Users\viaki\PycharmProjects\microblog-0.23\lib\site-packages\redis\connection.py", line 615, in _connect
+    raise err
+  File "C:\Users\viaki\PycharmProjects\microblog-0.23\lib\site-packages\redis\connection.py", line 603, in _connect
+    sock.connect(socket_address)
+ConnectionRefusedError: [WinError 10061] Подключение не установлено, т.к. конечный компьютер отверг запрос на подключение
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\viaki\PycharmProjects\microblog-0.23\lib\site-packages\flask\app.py", line 2070, in wsgi_app
+    response = self.full_dispatch_request()
+  File "C:\Users\viaki\PycharmProjects\microblog-0.23\lib\site-packages\flask\app.py", line 1515, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "C:\Users\viaki\PycharmProjects\microblog-0.23\lib\site-packages\flask\app.py", line 1513, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "C:\Users\viaki\PycharmProjects\microblog-0.23\lib\site-packages\flask\app.py", line 1499, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**req.view_args)
+  File "C:\Users\viaki\PycharmProjects\microblog-0.23\lib\site-packages\flask_login\utils.py", line 272, in decorated_view
+    return func(*args, **kwargs)
+  File "C:\Users\viaki\Desktop\microblog-0.23\app\main\routes.py", line 217, in export_posts
+    current_user.launch_task('export_posts', _('Exporting posts...'))
+  File "C:\Users\viaki\Desktop\microblog-0.23\app\models.py", line 177, in launch_task
+    rq_job = current_app.task_queue.enqueue('app.tasks.' + name, self.id,
+  File "C:\Users\viaki\PycharmProjects\microblog-0.23\lib\site-packages\rq\queue.py", line 502, in enqueue
+    return self.enqueue_call(
+  File "C:\Users\viaki\PycharmProjects\microblog-0.23\lib\site-packages\rq\queue.py", line 400, in enqueue_call
+    return self.enqueue_job(job, pipeline=pipeline, at_front=at_front)
+  File "C:\Users\viaki\PycharmProjects\microblog-0.23\lib\site-packages\rq\queue.py", line 560, in enqueue_job
+    job.save(pipeline=pipe)
+  File "C:\Users\viaki\PycharmProjects\microblog-0.23\lib\site-packages\rq\job.py", line 650, in save
+    if self.get_redis_server_version() >= StrictVersion("4.0.0"):
+  File "C:\Users\viaki\PycharmProjects\microblog-0.23\lib\site-packages\rq\job.py", line 658, in get_redis_server_version
+    self.redis_server_version = get_version(self.connection)
+  File "C:\Users\viaki\PycharmProjects\microblog-0.23\lib\site-packages\rq\utils.py", line 283, in get_version
+    version_string = connection.info("server")["redis_version"]
+  File "C:\Users\viaki\PycharmProjects\microblog-0.23\lib\site-packages\redis\client.py", line 1306, in info
+    return self.execute_command('INFO', section)
+  File "C:\Users\viaki\PycharmProjects\microblog-0.23\lib\site-packages\redis\client.py", line 898, in execute_command
+    conn = self.connection or pool.get_connection(command_name, **options)
+  File "C:\Users\viaki\PycharmProjects\microblog-0.23\lib\site-packages\redis\connection.py", line 1192, in get_connection
+    connection.connect()
+  File "C:\Users\viaki\PycharmProjects\microblog-0.23\lib\site-packages\redis\connection.py", line 563, in connect
+    raise ConnectionError(self._error_message(e))
+redis.exceptions.ConnectionError: Error 10061 connecting to None:6379. Подключение не установлено, т.к. конечный компьютер отверг запрос на подключение.
+2023-04-30 13:39:17,794 INFO: Microblog startup [in C:\Users\viaki\Desktop\ChatGO\app\__init__.py:89]
+2023-04-30 14:46:01,817 INFO: Microblog startup [in C:\Users\viaki\Desktop\ChatGO\app\__init__.py:89]
+2023-04-30 16:08:36,271 INFO: Microblog startup [in C:\Users\viaki\Desktop\ChatGO\app\__init__.py:89]
